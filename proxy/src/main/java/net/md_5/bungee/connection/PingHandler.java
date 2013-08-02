@@ -32,9 +32,9 @@ public class PingHandler extends PacketHandler
     }
 
     @Override
-    public void handle(PacketFFKick kick) throws Exception
+    public void handle(PacketFEPing pingPacket) throws Exception
     {
-        String[] split = kick.getMessage().split( "\00" );
+        String[] split = pingPacket.getMessage().split( "\00" );
         ServerPing ping = new ServerPing( Byte.parseByte( split[1] ), split[2], split[3], Integer.parseInt( split[4] ), Integer.parseInt( split[5] ) );
         callback.done( ping, null );
     }
